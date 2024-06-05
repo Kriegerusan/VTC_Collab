@@ -40,4 +40,13 @@ class VehiculeController
         }
         require_once "../view/editer_vehicule.php";
     }
+
+    public function remove($id)
+    {
+
+        if ($_GET['action'] == "delete") {
+            $vehicule  = new vehicule();
+            return $vehicule->delete($id, 'vehicule');
+        }
+    }
 }

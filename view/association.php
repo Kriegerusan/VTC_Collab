@@ -5,7 +5,11 @@ $association = new AssociationController();
 $asso = $association->afficher();
 include "../view/afficher_association.php";
 if ($_GET) {
-    $association->editer($_GET['id']);
+    if ($_GET['action'] == 'edit') {
+        $association->editer($_GET['id']);
+    } elseif ($_GET['action'] == 'delete') {
+        $association->remove($_GET['id']);
+    }
 } else {
     $association->ajouter();
 }

@@ -91,4 +91,15 @@ class Vehicule extends Connection implements iCRUD
             header('Location:' . $_SERVER['PHP_SELF']);
         }
     }
+    public function delete($id, $table)
+    {
+        $db = Connection::getConnect();
+
+        $sql = $db->prepare("delete from $table where id=$id");
+
+        if ($sql->execute()) {
+            //REDIRECTION SUR LA MM PAGE
+            header('Location:' . $_SERVER['PHP_SELF']);
+        }
+    }
 }

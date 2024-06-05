@@ -4,29 +4,7 @@ require_once "iCRUD.php";
 require_once "Connection.php";
 
 class Association extends Connection implements iCRUD
-{/*
-    private $prenom;
-    private $nom;
-
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    public function getNom()
-    {
-        return $this->nom;
-    }
-    public function setPrenom($prenom)
-    {
-        return $this->prenom = $prenom;
-    }
-
-    public function setNom($nom)
-    {
-        return $this->nom = $nom;
-    }
-*/
+{
     public function create($donnees, $table)
     {
         $db = Connection::getConnect();
@@ -64,6 +42,18 @@ class Association extends Connection implements iCRUD
         }
 
         $sql = $db->prepare("UPDATE $table SET $champs WHERE id=$id");
+
+        if ($sql->execute()) {
+            //REDIRECTION SUR LA MM PAGE
+            header('Location:' . $_SERVER['PHP_SELF']);
+        }
+    }
+
+    public function delete($id, $table)
+    {
+        $db = Connection::getConnect();
+
+        $sql = $db->prepare("delete from $table where id=$id");
 
         if ($sql->execute()) {
             //REDIRECTION SUR LA MM PAGE

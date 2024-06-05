@@ -48,4 +48,12 @@ class AssociationController
         $listevehicule = $vehicule->read("vehicule");
         require_once "../view/editer_association.php";
     }
+    public function remove($id)
+    {
+
+        if ($_GET['action'] == "delete") {
+            $association  = new Association();
+            return $association->delete($id, 'association');
+        }
+    }
 }
