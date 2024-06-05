@@ -6,6 +6,7 @@ require_once '../model/Vehicule.php';
 
 class AdminController
 {
+
     public function afficherConducteurs()
     {
         $conducteurInstance = new Conducteur();
@@ -26,5 +27,24 @@ class AdminController
         $associationInstance = new Association();
 
         return $associationInstance->read("association");
+    }
+
+    public function afficherVehiculeLibre()
+    {
+        $vehiculeInstance = new Vehicule();
+
+        //en attente d'implementation
+        //return array
+        //$vehiculeLibre = $vehiculeInstance->readVehiculeLibre();
+
+    }
+
+    public function afficherConducteurLibre()
+    {
+        $conducteurInstance = new Conducteur();
+
+        //en attente d'implementation
+        //return array
+        //$conducteurLibre = $conducteurInstance->readConducteurLibre();
     }
 }
