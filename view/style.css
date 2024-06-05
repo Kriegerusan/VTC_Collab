@@ -6,3 +6,17 @@
 label, button {
     margin: 1vh 0;
 }
+
+nav .admin
+{
+    justify-content: end;
+}
+
+.separator
+{
+    margin-inline: auto;
+    margin-bottom: 2rem;
+    height: 2px;
+    background-color: red;
+    width: 20%;
+}
