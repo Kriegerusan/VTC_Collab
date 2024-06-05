@@ -58,6 +58,9 @@ class Vehicule extends Connection implements iCRUD
 
         foreach ($donnees as $indice => $valeur) {
             $champs .= ($champs ? "," : "") . $indice;
+            if($indice == "immatriculation"){
+                $valeur = strtoupper($valeur);
+            }
             $valeurs .= ($valeurs ? "," : "") . "'$valeur'";
         }
 

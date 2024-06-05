@@ -35,7 +35,9 @@ class AdminController
 
         //en attente d'implementation
         //return array
-        //$vehiculeLibre = $vehiculeInstance->readVehiculeLibre();
+        $vehiculeLibre = $vehiculeInstance->readVehiculeLibre();
+
+        return $vehiculeLibre;
 
     }
 
@@ -45,6 +47,8 @@ class AdminController
 
         //en attente d'implementation
         //return array
-        //$conducteurLibre = $conducteurInstance->readConducteurLibre();
+        $conducteurLibre = $conducteurInstance->readConducteurLibre();
+
+        return $conducteurLibre;
     }
 }

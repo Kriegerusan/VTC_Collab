@@ -5,6 +5,8 @@ require_once '../controller/AdminController.php';
 
 $adminControllerInstance = new AdminController();
 
+$vehicules = $adminControllerInstance->afficherVehiculeLibre();
+$conducteurs = $adminControllerInstance->afficherConducteurLibre();
 ?>
 
 <div class='container'>
@@ -20,7 +22,7 @@ $adminControllerInstance = new AdminController();
             <tr>
                 <td scope='row'><?php echo count($adminControllerInstance->afficherConducteurs()) ?></td>
                 <td><?php echo count($adminControllerInstance->afficherVehicules()) ?></td>
-                <td><?php echo count($adminControllerInstance->afficherVehicules()) ?></td>
+                <td><?php echo count($adminControllerInstance->afficherAssociation()) ?></td>
             </tr>
         </tbody>
     </table>
@@ -38,7 +40,18 @@ $adminControllerInstance = new AdminController();
         </thead>
         <tbody>
             <?php
-            
+                foreach($vehicules as $value)
+                {
+                    echo "
+                    <tr>
+                        <td scope='row'>" .  $value['id'] . "</td>
+                        <td>" . $value['marque'] . "</td>
+                        <td>" . $value['modele'] . "</td>
+                        <td>" . $value['couleur'] . "</td>
+                        <td>" . $value['immatriculation'] . "</td>
+                    </tr>
+                    ";
+                }
             ?>
         </tbody>
     </table>
@@ -54,7 +67,16 @@ $adminControllerInstance = new AdminController();
         </thead>
         <tbody>
             <?php 
-            
+            foreach($conducteurs as $value)
+            {
+                echo "
+                <tr>
+                    <td scope='row'>" .  $value['id'] . "</td>
+                    <td>" . $value['prenom'] . "</td>
+                    <td>" . $value['nom'] . "</td>
+                </tr>
+                ";
+            }
             ?>
         </tbody>
     </table>
