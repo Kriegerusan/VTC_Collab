@@ -6,3 +6,8 @@
 label, button {
     margin: 1vh 0;
 }
+
+nav .admin
+{
+    justify-content: end;
+}
