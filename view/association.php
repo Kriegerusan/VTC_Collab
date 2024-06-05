@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once "header.html";
 require_once "../controller/AssociationController.php";
 $association = new AssociationController();
@@ -13,3 +14,4 @@ if ($_GET) {
 } else {
     $association->ajouter();
 }
+ob_end_flush();

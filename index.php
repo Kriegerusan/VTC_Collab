@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once "view/header.html";
 require_once "controller/ConducteurController.php";
 $conducteur = new ConducteurController();
@@ -13,3 +14,4 @@ if ($_GET) {
 } else {
     $conducteur->ajouter();
 }
+ob_end_flush();
