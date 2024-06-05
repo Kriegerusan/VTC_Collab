@@ -6,7 +6,7 @@ $asso = $association->afficher();
 include "../view/afficher_association.php";
 if ($_GET) {
     if ($_GET['action'] == 'edit') {
-        $association->editer($_GET['id']);
+        $association->editer($_GET['id'], $_GET['conducteur'], $_GET['vehicule']);
     } elseif ($_GET['action'] == 'delete') {
         $association->remove($_GET['id']);
     }

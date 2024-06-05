@@ -86,4 +86,26 @@ class Conducteur extends Connection implements iCRUD
             header('Location:' . $_SERVER['PHP_SELF']);
         }
     }
+
+    public function readConducteurLibre()
+    {
+        $db = Connection::getConnect();
+        $sql = $db->prepare("SELECT conducteur.*
+        FROM conducteur
+        LEFT JOIN association ON conducteur.id = association.conducteur
+        WHERE association.conducteur IS NULL;");
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function editConducteurLibre($id)
+    {
+        $db = Connection::getConnect();
+        $sql = $db->prepare("SELECT conducteur.*
+        FROM conducteur
+        LEFT JOIN association ON conducteur.id = association.conducteur
+        WHERE association.conducteur IS NULL OR conducteur.id=$id;");
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

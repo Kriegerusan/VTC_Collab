@@ -102,4 +102,26 @@ class Vehicule extends Connection implements iCRUD
             header('Location:' . $_SERVER['PHP_SELF']);
         }
     }
+
+    public function readVehiculeLibre()
+    {
+        $db = Connection::getConnect();
+        $sql = $db->prepare("SELECT vehicule.*
+        FROM vehicule
+        LEFT JOIN association ON vehicule.id = association.vehicule
+        WHERE association.vehicule IS NULL;");
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function editVehiculeLibre($id)
+    {
+        $db = Connection::getConnect();
+        $sql = $db->prepare("SELECT vehicule.*
+        FROM vehicule
+        LEFT JOIN association ON vehicule.id = association.vehicule
+        WHERE association.vehicule IS NULL OR vehicule.id=$id;");
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
