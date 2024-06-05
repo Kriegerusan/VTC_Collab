@@ -5,7 +5,11 @@ $vehicule = new VehiculeController();
 $voiture = $vehicule->afficher();
 include "../view/afficher_vehicule.php";
 if ($_GET) {
-    $vehicule->editer($_GET['id']);
+    if ($_GET['action'] == 'edit') {
+        $vehicule->editer($_GET['id']);
+    } elseif ($_GET['action'] == 'delete') {
+        $vehicule->remove($_GET['id']);
+    }
 } else {
     $vehicule->ajouter();
 }
