@@ -7,7 +7,7 @@ $adminControllerInstance = new AdminController();
 
 ?>
 
-<div class='container'>
+<div class='container table-responsive-sm'>
     <table class='tableau table'>
         <thead>
             <tr>
@@ -16,7 +16,7 @@ $adminControllerInstance = new AdminController();
                 <th scope="col">Nombre d'association</td>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
             <tr>
                 <td scope='row'><?php echo count($adminControllerInstance->afficherConducteurs()) ?></td>
                 <td><?php echo count($adminControllerInstance->afficherVehicules()) ?></td>
@@ -36,9 +36,9 @@ $adminControllerInstance = new AdminController();
                 <th scope="col">immatriculation</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
             <?php
-            
+
             ?>
         </tbody>
     </table>
@@ -47,14 +47,14 @@ $adminControllerInstance = new AdminController();
         <caption align="top" style="text-align: center; color:black"><strong>Conducteur Libre</strong></caption>
         <thead>
             <tr style="border-top: 1px solid;border-color: inherit;">
-                <th >id_conducteur</th>
-                <th >prenom</th>
-                <th >nom</th>
+                <th>id_conducteur</th>
+                <th>prenom</th>
+                <th>nom</th>
             </tr>
         </thead>
-        <tbody>
-            <?php 
-            
+        <tbody class="table-group-divider">
+            <?php
+
             ?>
         </tbody>
     </table>
