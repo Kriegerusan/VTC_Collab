@@ -9,7 +9,7 @@ $vehicules = $adminControllerInstance->afficherVehiculeLibre();
 $conducteurs = $adminControllerInstance->afficherConducteurLibre();
 ?>
 
-<div class='container'>
+<div class='container table-responsive-sm'>
     <table class='tableau table'>
         <thead>
             <tr>
@@ -18,7 +18,7 @@ $conducteurs = $adminControllerInstance->afficherConducteurLibre();
                 <th scope="col">Nombre d'association</td>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
             <tr>
                 <td scope='row'><?php echo count($adminControllerInstance->afficherConducteurs()) ?></td>
                 <td><?php echo count($adminControllerInstance->afficherVehicules()) ?></td>
@@ -38,11 +38,10 @@ $conducteurs = $adminControllerInstance->afficherConducteurLibre();
                 <th scope="col">immatriculation</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
             <?php
-                foreach($vehicules as $value)
-                {
-                    echo "
+            foreach ($vehicules as $value) {
+                echo "
                     <tr>
                         <td scope='row'>" .  $value['id'] . "</td>
                         <td>" . $value['marque'] . "</td>
@@ -51,7 +50,7 @@ $conducteurs = $adminControllerInstance->afficherConducteurLibre();
                         <td>" . $value['immatriculation'] . "</td>
                     </tr>
                     ";
-                }
+            }
             ?>
         </tbody>
     </table>
@@ -60,15 +59,14 @@ $conducteurs = $adminControllerInstance->afficherConducteurLibre();
         <caption align="top" style="text-align: center; color:black"><strong>Conducteur Libre</strong></caption>
         <thead>
             <tr style="border-top: 1px solid;border-color: inherit;">
-                <th >id_conducteur</th>
-                <th >prenom</th>
-                <th >nom</th>
+                <th>id_conducteur</th>
+                <th>prenom</th>
+                <th>nom</th>
             </tr>
         </thead>
         <tbody>
-            <?php 
-            foreach($conducteurs as $value)
-            {
+            <?php
+            foreach ($conducteurs as $value) {
                 echo "
                 <tr>
                     <td scope='row'>" .  $value['id'] . "</td>

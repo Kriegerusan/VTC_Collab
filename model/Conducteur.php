@@ -48,6 +48,7 @@ class Conducteur extends Connection implements iCRUD
             //REDIRECTION SUR LA MM PAGE
 
             header('Location:' . $_SERVER['PHP_SELF']);
+            exit();
         }
     }
 
@@ -72,6 +73,7 @@ class Conducteur extends Connection implements iCRUD
         if ($sql->execute()) {
             //REDIRECTION SUR LA MM PAGE
             header('Location:' . $_SERVER['PHP_SELF']);
+            exit();
         }
     }
 

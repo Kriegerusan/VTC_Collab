@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container table-responsive-sm">
     <table class="table tableau">
         <thead>
             <tr>
@@ -12,7 +12,7 @@
                 <th scope="col">Supprimer</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
 
             <?php
             foreach ($voiture as $value) {

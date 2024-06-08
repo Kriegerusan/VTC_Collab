@@ -1,5 +1,6 @@
 <?php
 ob_start();
+ob_start();
 require_once "header.html";
 require_once "../controller/vehiculeController.php";
 $vehicule = new VehiculeController();
