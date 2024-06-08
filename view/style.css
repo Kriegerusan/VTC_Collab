@@ -21,3 +21,9 @@ nav .admin
     background-color: red;
     width: 20%;
 }
+
+.photo{
+    width: 7vh;
+    height: 7vh;
+    border-radius: 50%;
+}

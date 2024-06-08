@@ -7,6 +7,7 @@ class Conducteur extends Connection implements iCRUD
 {
     private $prenom;
     private $nom;
+    private $photo;
 
     public function getPrenom()
     {
@@ -16,6 +17,10 @@ class Conducteur extends Connection implements iCRUD
     public function getNom()
     {
         return $this->nom;
+    }
+    public function getPhoto()
+    {
+        return $this->photo;
     }
     public function setPrenom($prenom)
     {
@@ -27,6 +32,11 @@ class Conducteur extends Connection implements iCRUD
         return $this->nom = $nom;
     }
 
+    public function setPhoto($photo)
+    {
+        return $this->photo = $photo;
+    }
+
     public function __toString()
     {
         return $this->getPrenom() . " " . $this->getNom();
@@ -35,15 +45,12 @@ class Conducteur extends Connection implements iCRUD
     {
         $db = Connection::getConnect();
 
-        $champs = "";
-        $valeurs = "";
 
-        foreach ($donnees as $indice => $valeur) {
-            $champs .= ($champs ? "," : "") . $indice;
-            $valeurs .= ($valeurs ? "," : "") . "'$valeur'";
-        }
 
-        $sql = $db->prepare("INSERT INTO $table ($champs)  VALUES ($valeurs)");
+
+
+
+        $sql = $db->prepare("INSERT INTO $table ($donnees[0])  VALUES ($donnees[1])");
         if ($sql->execute()) {
             //REDIRECTION SUR LA MM PAGE
 
@@ -63,13 +70,8 @@ class Conducteur extends Connection implements iCRUD
     public function edit($donnees, $id, $table)
     {
         $db = Connection::getConnect();
-        $champs = "";
-        foreach ($donnees as $indice => $valeur) {
-            $champs .= ($champs ? "," : "") . $indice . "=" . "'$valeur'";
-        }
 
-        $sql = $db->prepare("UPDATE $table SET $champs WHERE id=$id");
-
+        $sql = $db->prepare("UPDATE $table SET $donnees WHERE id=$id");
         if ($sql->execute()) {
             //REDIRECTION SUR LA MM PAGE
             header('Location:' . $_SERVER['PHP_SELF']);

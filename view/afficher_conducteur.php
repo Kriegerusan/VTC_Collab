@@ -4,6 +4,7 @@
             <tr>
                 <hr>
                 <th scope="col">id_conducteur</th>
+                <th scope="col">Photo</th>
                 <th scope="col">Prénom</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Editer</th>
@@ -16,10 +17,14 @@
             foreach ($conduc as $value) {
                 echo "<tr>\n";
                 echo "<td scope='row'>" . $value['id'] . "</td>\n";
+                if ($value['photo'] != "") {
+                    echo "<td><img class='photo' src='/poo/vtc/ressources/" . $value['photo'] . "' alt=''></td>\n";
+                } else {
+                    echo "<td><img class='photo' src='/poo/vtc/ressources/nophoto.jpg' alt=''></td>\n";
+                }
                 echo "<td>" . $value['prenom'] . "</td>\n";
                 echo "<td>" . $value['nom'] . "</td>\n";
                 echo "<td><a href='?action=edit&id=" . $value['id']  .  "&prenom=" . $value['prenom'] . "&nom=" . $value['nom'] . "'><i class='fa-solid fa-pen'></a></td>\n";
-                // echo "<td><a href='?action=delete&id=" . $value['id'] . "' '><i class='fa-solid fa-x'></a></td>\n";
                 echo "<td><button type='button' class='btn btn-link suppressButton' data-bs-toggle='modal' data-bs-target='#deleteModal' value='" . $value['id'] . "'><i class='fa-solid fa-x'></i></button></a></td>\n";
                 echo "</tr>\n";
             }
