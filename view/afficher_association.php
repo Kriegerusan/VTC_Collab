@@ -10,7 +10,7 @@
         <th scope="col">Supprimer</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="table-group-divider tableSeparator">
       <?php
       $tableauVehicule = [];
       $vehicule  = new Vehicule();

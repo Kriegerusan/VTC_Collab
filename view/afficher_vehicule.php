@@ -3,21 +3,28 @@
         <thead>
             <tr>
                 <hr>
-                <th scope="col">id_conducteur</th>
-                <th scope="col">Prénom</th>
-                <th scope="col">Nom</th>
+                <th scope="col">Id_vehicule</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Marque</th>
+                <th scope="col">Modele</th>
                 <th scope="col">Couleur</th>
                 <th scope="col">Immatriculation</th>
                 <th scope="col">Editer</th>
                 <th scope="col">Supprimer</th>
             </tr>
         </thead>
-        <tbody class="table-group-divider">
+        <tbody class="table-group-divider tableSeparator">
 
             <?php
             foreach ($voiture as $value) {
                 echo "<tr>\n";
                 echo "<td scope='row'>" . $value['id'] . "</td>\n";
+                if($value['photo'] != null){
+                  echo "<td><img src=../ressources/" . $value['photo'] . "></td>";
+                }else{
+                  echo "<td>Pas d'image <i class='fa-solid fa-face-sad-tear' style='color: #0d6efd;'></i></td>";
+                }
+                
                 echo "<td>" . $value['marque'] . "</td>\n";
                 echo "<td>" . $value['modele'] . "</td>\n";
                 echo "<td>" . $value['couleur'] . "</td>\n";

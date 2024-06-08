@@ -18,7 +18,7 @@ $conducteurs = $adminControllerInstance->afficherConducteurLibre();
                 <th scope="col">Nombre d'association</td>
             </tr>
         </thead>
-        <tbody class="table-group-divider">
+        <tbody class="table-group-divider tableSeparator">
             <tr>
                 <td scope='row'><?php echo count($adminControllerInstance->afficherConducteurs()) ?></td>
                 <td><?php echo count($adminControllerInstance->afficherVehicules()) ?></td>
@@ -38,10 +38,11 @@ $conducteurs = $adminControllerInstance->afficherConducteurLibre();
                 <th scope="col">immatriculation</th>
             </tr>
         </thead>
-        <tbody class="table-group-divider">
+        <tbody class="table-group-divider tableSeparator">
             <?php
-            foreach ($vehicules as $value) {
-                echo "
+            if ($vehicules != null) {
+                foreach ($vehicules as $value) {
+                    echo "
                     <tr>
                         <td scope='row'>" .  $value['id'] . "</td>
                         <td>" . $value['marque'] . "</td>
@@ -50,6 +51,13 @@ $conducteurs = $adminControllerInstance->afficherConducteurLibre();
                         <td>" . $value['immatriculation'] . "</td>
                     </tr>
                     ";
+                }
+            } else {
+                echo"
+                    <tr>
+                        <td colspan=5>Aucun Vehicule libre <i class='fa-solid fa-face-sad-tear' style='color: #0d6efd;'></i></td>
+                    </tr>
+                ";
             }
             ?>
         </tbody>
@@ -64,17 +72,27 @@ $conducteurs = $adminControllerInstance->afficherConducteurLibre();
                 <th>nom</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider tableSeparator">
             <?php
-            foreach ($conducteurs as $value) {
-                echo "
+            if ($conducteurs != null) {
+                foreach ($conducteurs as $value) {
+                    echo "
                 <tr>
                     <td scope='row'>" .  $value['id'] . "</td>
                     <td>" . $value['prenom'] . "</td>
                     <td>" . $value['nom'] . "</td>
                 </tr>
                 ";
+                }
+            } else {
+                echo "
+                    <tr>
+
+                        <td colspan=3>Aucun Vehicule libre <i class='fa-solid fa-face-sad-tear' style='color: #0d6efd;'></i></td>
+                    </tr>
+                ";
             }
+
             ?>
         </tbody>
     </table>

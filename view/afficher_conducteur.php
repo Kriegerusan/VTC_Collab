@@ -10,7 +10,7 @@
                 <th scope="col">Supprimer</th>
             </tr>
         </thead>
-        <tbody class="table-group-divider">
+        <tbody class="table-group-divider tableSeparator">
 
             <?php
             foreach ($conduc as $value) {
