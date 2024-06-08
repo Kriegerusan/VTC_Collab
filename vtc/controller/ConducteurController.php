@@ -1,6 +1,6 @@
 <?php
 
-require_once "./model/Conducteur.php";
+require_once "../model/Conducteur.php";
 
 class ConducteurController
 {
@@ -17,7 +17,7 @@ class ConducteurController
             }
         }
 
-        require_once "./view/ajout_conducteur.html";
+        require_once "ajout_conducteur.html";
     }
 
 
@@ -36,7 +36,7 @@ class ConducteurController
                 return $conducteur->edit($_POST, $id, 'conducteur');
             }
         }
-        require_once "./view/editer_conducteur.php";
+        require_once "editer_conducteur.php";
     }
 
     public function remove($id)

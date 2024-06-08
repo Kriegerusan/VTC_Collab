@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once "header.html";
 require_once "../controller/vehiculeController.php";
 $vehicule = new VehiculeController();
@@ -15,3 +16,5 @@ if ($_GET) {
 } else {
     $vehicule->ajouter();
 }
+
+ob_end_flush();

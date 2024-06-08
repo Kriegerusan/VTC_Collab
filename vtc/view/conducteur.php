@@ -1,9 +1,10 @@
 <?php
-require_once "view/header.html";
-require_once "controller/ConducteurController.php";
+ob_start();
+require_once "header.html";
+require_once "../controller/ConducteurController.php";
 $conducteur = new ConducteurController();
 $conduc = $conducteur->afficher();
-include "./view/afficher_conducteur.php";
+include "afficher_conducteur.php";
 if ($_GET) {
     if ($_GET['action'] == 'edit') {
         $conducteur->editer($_GET['id']);
@@ -13,3 +14,4 @@ if ($_GET) {
 } else {
     $conducteur->ajouter();
 }
+ob_end_flush();

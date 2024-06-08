@@ -30,7 +30,7 @@
         echo "<td>" . $tableauConducteur[$value['conducteur']] . "<p>" . $value['conducteur'] . "</p></td>\n";
         echo "<td>" . $tableauVehicule[$value['vehicule']] . "<p>" . $value['vehicule'] . "</p></td>\n";
         echo "<td><a href='?action=edit&id=" . $value['id']  . "&conducteur=" . $value['conducteur'] . "&vehicule=" . $value['vehicule'] . "'><i class='fa-solid fa-pen'></i></a></td>\n";
-        echo "<td><button type='button' class='btn btn-primary suppressButton' data-bs-toggle='modal' data-bs-target='#deleteModal' value='" . $value['id'] . "'><i class='fa-solid fa-x'></i></button></a></td>\n";
+        echo "<td><button type='button' class='btn btn-link suppressButton' data-bs-toggle='modal' data-bs-target='#deleteModal' value='" . $value['id'] . "'><i class='fa-solid fa-x'></i></button></a></td>\n";
         echo "</tr>\n";
       }
       ?>
