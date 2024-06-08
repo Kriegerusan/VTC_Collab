@@ -13,11 +13,8 @@ class ConducteurController
                 $conducteur  = new Conducteur();
                 $KO = 0;
                 if ($_FILES['photo']['name'] != "") {
-                    $dossier = "../ressources/";
+                    $dossier = "../public/";
 
-                    if (!file_exists($dossier)) {
-                        mkdir($dossier, 755);
-                    }
                     $tmpName = $_FILES['photo']['tmp_name'];
                     $name = $_FILES['photo']['name'];
                     $size = $_FILES['photo']['size'];
@@ -71,7 +68,7 @@ class ConducteurController
                 $KO = 0;
 
                 if ($_FILES['photo']['name'] != "") {
-                    $dossier = "../ressources/";
+                    $dossier = "../public/";
 
                     if (!file_exists($dossier)) {
                         mkdir($dossier, 755);
