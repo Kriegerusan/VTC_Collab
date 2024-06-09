@@ -1,5 +1,5 @@
 <div class="container">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="conducteur" class="form-label">marque</label>
             <input type="text" placeholder="marque" class="form-control" id="conducteur" name="marque" value="<?= $_GET['marque'] ?>">
@@ -15,6 +15,10 @@
         <div class="mb-3">
             <label for="conducteur" class="form-label">immatriculation</label>
             <input type="text" placeholder="immatriculation" class="form-control" id="conducteur" name="immatriculation" value="<?= $_GET['immatriculation'] ?>">
+        </div>
+        <div class="mb-3">
+          <label for="conducteur" class="form-label">Photo</label>
+          <input type="file" class="form-control" id="conducteur" name="photo" accept=".jpg,.png">
         </div>
         <button type="submit" class="btn btn-light">Modifier ce vehicule</button>
     </form>

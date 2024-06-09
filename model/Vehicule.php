@@ -8,6 +8,7 @@ class Vehicule extends Connection implements iCRUD
     private $modele;
     private $couleur;
     private $immatriculation;
+    private $photo;
 
     public function getmarque()
     {
@@ -26,6 +27,11 @@ class Vehicule extends Connection implements iCRUD
     {
         return $this->immatriculation;
     }
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
     public function setmarque($marque)
     {
         return $this->marque = $marque;
@@ -42,6 +48,10 @@ class Vehicule extends Connection implements iCRUD
     public function setimmatriculation($immatriculation)
     {
         return $this->immatriculation = $immatriculation;
+    }
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
     }
 
 

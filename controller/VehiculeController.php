@@ -1,6 +1,7 @@
 <?php
 
 require_once "../model/Vehicule.php";
+require_once "../libs/ImageManager.php";
 
 class VehiculeController
 {
@@ -34,8 +35,25 @@ class VehiculeController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($_GET) {
                 $vehicule  = new vehicule();
+                if ($_FILES['photo']['size'] == 0) {
+                    return $vehicule->edit($_POST, $id, "vehicule");
+                } else {
+                    $image = new ImageManager($_FILES['photo']);
+                    if ($image == null) {
+                        echo $image->GetError();
+                    } else {
+                        $image->moveImageToFolder();
+                        $dataArray = array(
+                            'marque' => $_POST['marque'],
+                            'modele' => $_POST['modele'],
+                            'couleur' => $_POST['couleur'],
+                            'immatriculation' => $_POST['immatriculation'],
+                            'photo' => $image->getImageInfo()['uniqueName']
+                        );
 
-                return $vehicule->edit($_POST, $id, "vehicule");
+                        return $vehicule->edit($dataArray, $id, "vehicule");
+                    }
+                }
             }
         }
         require_once "../view/editer_vehicule.php";
