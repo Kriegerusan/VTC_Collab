@@ -1,0 +1,15 @@
+
+
+modestevtc.great-site.net
+
+ftp :
+FTP hostname:	ftpupload.net
+FTP username:	if0_36696451
+FTP password: VaTPLmTwI70spU
+
+
+sql :
+MySQL hostname:	sql201.infinityfree.com
+MySQL username:	if0_36696451
+MySQL password: VaTPLmTwI70spU
+database: if0_36696451_vtc

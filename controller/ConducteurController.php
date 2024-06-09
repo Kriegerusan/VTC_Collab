@@ -1,54 +1,34 @@
 <?php
 
 require_once "../model/Conducteur.php";
-
+require_once "../libs/ImageManager.php";
 class ConducteurController
 {
 
     public function ajouter()
     {
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (!$_GET) {
                 $conducteur  = new Conducteur();
-                $KO = 0;
-                if ($_FILES['photo']['name'] != "") {
-                    $dossier = "../public/";
-
-                    $tmpName = $_FILES['photo']['tmp_name'];
-                    $name = $_FILES['photo']['name'];
-                    $size = $_FILES['photo']['size'];
-                    $error = $_FILES['photo']['error'];
-
-                    $tabExtension = explode('.', $name);
-                    $extension = strtolower(end($tabExtension));
-                    //Tableau des extensions que l'on accepte
-                    $extensions = ['jpg', 'png', 'jpeg', 'gif'];
-                    //Taille max que l'on accepte
-                    $maxSize = 400000;
-                    if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
-                        $uniqueName = uniqid('', true);
-                        //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
-                        $photo = $uniqueName . "." . $extension;
-                        //$file = 5f586bf96dcd38.73540086.jpg
-                        move_uploaded_file($tmpName, $dossier . $photo);
+                if ($_FILES['photo']['size'] == 0) {
+                    return $conducteur->create($_POST, "conducteur");
+                } else {
+                    $image = new ImageManager($_FILES['photo']);
+                    if ($image == null) {
+                        echo $image->GetError();
                     } else {
-                        echo "Mauvaise extension";
-                        $KO++;
+                        $image->moveImageToFolder();
+                        $dataArray = array(
+                            'prenom' => $_POST['prenom'],
+                            'nom' => $_POST['nom'],
+                            'photo' => $image->getImageInfo()['uniqueName']
+                        );
+
+                        return $conducteur->create($dataArray, "conducteur");
                     }
                 }
-
-                $donnees = [];
-                $donnees[0] = "photo";
-                $donnees[1] = "'$photo'";
-                foreach ($_POST as $indice => $valeur) {
-                    $donnees[0] .= ($donnees[0] ? "," : "") . $indice;
-                    $donnees[1] .= ($donnees[1] ? "," : "") . "'$valeur'";
-                }
-                $conducteur->create($donnees, 'conducteur');
             }
         }
-
         require_once "ajout_conducteur.html";
     }
 
@@ -61,51 +41,34 @@ class ConducteurController
 
     public function editer($id)
     {
+
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if ($_GET['action'] == "edit") {
+            if ($_GET) {
                 $conducteur  = new Conducteur();
-
-                $KO = 0;
-
-                if ($_FILES['photo']['name'] != "") {
-                    $dossier = "../public/";
-
-                    if (!file_exists($dossier)) {
-                        mkdir($dossier, 755);
-                    }
-                    $tmpName = $_FILES['photo']['tmp_name'];
-                    $name = $_FILES['photo']['name'];
-                    $size = $_FILES['photo']['size'];
-                    $error = $_FILES['photo']['error'];
-
-                    $tabExtension = explode('.', $name);
-                    $extension = strtolower(end($tabExtension));
-                    //Tableau des extensions que l'on accepte
-                    $extensions = ['jpg', 'png', 'jpeg', 'gif'];
-                    //Taille max que l'on accepte
-                    $maxSize = 400000;
-                    if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
-                        $uniqueName = uniqid('', true);
-                        //uniqid génère quelque chose comme ca : 5f586bf96dcd38.73540086
-                        $photo = $uniqueName . "." . $extension;
-                        //$file = 5f586bf96dcd38.73540086.jpg
-                        move_uploaded_file($tmpName, $dossier . $photo);
-                        $champs = "photo='$photo'";
-                    } else {
-                        echo "Mauvaise extension";
-                        $KO++;
-                    }
+                if ($_FILES['photo']['size'] == 0) {
+                    return $conducteur->edit($_POST, $id, "conducteur");
                 } else {
-                    $champs = "";
-                }
+                    $image = new ImageManager($_FILES['photo']);
+                    if ($image == null) {
+                        echo $image->GetError();
+                    } else {
+                        $image->moveImageToFolder();
+                        $dataArray = array(
+                            'prenom' => $_POST['prenom'],
+                            'nom' => $_POST['nom'],
+                            'photo' => $image->getImageInfo()['uniqueName']
+                        );
 
-                foreach ($_POST as $indice => $valeur) {
-                    $champs .= ($champs ? "," : "") . $indice . "=" . "'$valeur'";
+                        return $conducteur->edit($dataArray, $id, "conducteur");
+                    }
                 }
-
-                return $conducteur->edit($champs, $id, 'conducteur');
             }
         }
+
+
+
+
         require_once "editer_conducteur.php";
     }
 

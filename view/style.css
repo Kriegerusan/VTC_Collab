@@ -24,3 +24,9 @@ nav .admin {
 .table tbody.tableSeparator {
   color: hsla(0, 100%, 50%, 0.35);
 }
+
+.photo{
+  width: 7vh;
+  height: 7vh;
+  border-radius: 50%;
+}

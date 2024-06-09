@@ -45,12 +45,18 @@ class Conducteur extends Connection implements iCRUD
     {
         $db = Connection::getConnect();
 
+        $champs = "";
+        $valeurs = "";
 
+        foreach ($donnees as $indice => $valeur) {
+            $champs .= ($champs ? "," : "") . $indice;
+            if ($indice == "immatriculation") {
+                $valeur = strtoupper($valeur);
+            }
+            $valeurs .= ($valeurs ? "," : "") . "'$valeur'";
+        }
 
-
-
-
-        $sql = $db->prepare("INSERT INTO $table ($donnees[0])  VALUES ($donnees[1])");
+        $sql = $db->prepare("INSERT INTO $table ($champs)  VALUES ($valeurs)");
         if ($sql->execute()) {
             //REDIRECTION SUR LA MM PAGE
 
@@ -70,8 +76,11 @@ class Conducteur extends Connection implements iCRUD
     public function edit($donnees, $id, $table)
     {
         $db = Connection::getConnect();
-
-        $sql = $db->prepare("UPDATE $table SET $donnees WHERE id=$id");
+        $champs = "";
+        foreach ($donnees as $indice => $valeur) {
+            $champs .= ($champs ? "," : "") . $indice . "=" . "'$valeur'";
+        }
+        $sql = $db->prepare("UPDATE $table SET $champs WHERE id=$id");
         if ($sql->execute()) {
             //REDIRECTION SUR LA MM PAGE
             header('Location:' . $_SERVER['PHP_SELF']);
