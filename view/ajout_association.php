@@ -4,6 +4,7 @@
 
         <?php
         $KO = 0;
+        //boucle génération du select conducteur
         if ($listeConduc != null) {
             echo "<select name='conducteur' id=''>";
             foreach ($listeConduc as $liste) {
@@ -21,6 +22,7 @@
         <label for="">Vehicule</label><br>
 
         <?php
+        //boucle génération du select vehicule
         if ($listevehicule != null) {
             echo " <select name='vehicule' id=''>";
             foreach ($listevehicule as $liste) {
@@ -34,6 +36,7 @@
         ?>
         </select><br>
         <?php
+        //bloquage du bouton d'association si l'un des deux select est vide
         if ($KO == 0) {
             echo "<button type='submit' class='btn btn-light'>Ajouter cette association</button>";
         } else {

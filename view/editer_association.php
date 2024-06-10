@@ -3,6 +3,7 @@
         <label for="">Conducteur</label><br>
         <select name="conducteur" id="">
             <?php
+            //boucle génération du select conducteur
             foreach ($listeConduc as $liste) {
                 echo "<option value='" . $liste['id'] . "'";
                 if ($liste['id'] == $_GET['conducteur']) {
@@ -15,6 +16,7 @@
         <label for="">Vehicule</label><br>
         <select name="vehicule" id="">
             <?php
+            //boucle génération du select vehicule
             foreach ($listevehicule as $liste) {
                 echo "<option value='" . $liste['id'] . "'";
                 if ($liste['id'] == $_GET['vehicule']) {

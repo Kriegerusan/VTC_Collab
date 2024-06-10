@@ -12,18 +12,22 @@
     </thead>
     <tbody class="table-group-divider tableSeparator">
       <?php
+
+      //récupération des info vehicule
       $tableauVehicule = [];
       $vehicule  = new Vehicule();
       $listevehicule = $vehicule->read("vehicule");
       foreach ($listevehicule as $key => $value) {
         $tableauVehicule[$value['id']] = $value['marque'] . " " . $value['modele'];
       }
+      //récupération des info conducteur
+      $tableauConducteur = [];
       $conducteur  = new Conducteur();
       $listeConduc = $conducteur->read("conducteur");
-      $tableauConducteur = [];
       foreach ($listeConduc as $key => $value) {
         $tableauConducteur[$value['id']] = $value['prenom'] . " " . $value['nom'];
       }
+      //boucle d'affichage des associations
       foreach ($asso as $value) {
         echo "<tr>\n";
         echo "<td scope='row'>" . $value['id'] . "</td>\n";
@@ -35,10 +39,7 @@
       }
       ?>
 
-      <!-- Button trigger modal -->
-
-
-      <!-- Modal -->
+      <!-- partie Modal confirmation suppression -->
       <form>
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">

@@ -14,6 +14,7 @@
         <tbody class="table-group-divider tableSeparator">
 
             <?php
+            //boucle d'affichage des conducteurs
             foreach ($conduc as $value) {
                 echo "<tr>\n";
                 echo "<td scope='row'>" . $value['id'] . "</td>\n";
@@ -33,7 +34,7 @@
     </table>
 </div>
 
-<!-- Modal -->
+<!-- partie Modal confirmation suppression -->
 <form>
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
