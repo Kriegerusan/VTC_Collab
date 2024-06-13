@@ -12,10 +12,30 @@ class VehiculeController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (!$_GET) {
                 $vehicule  = new vehicule();
-                $vehicule->setmarque($_POST['marque']);
-                $vehicule->setmodele($_POST['modele']);
-                $vehicule->setcouleur($_POST['couleur']);
-                $vehicule->setimmatriculation($_POST['immatriculation']);
+
+                if($_FILES['photo']['size'] == 0) 
+                {
+                    $vehicule->create($_POST, 'vehicule');
+                }
+                else
+                {
+                    $image = new ImageManager($_FILES['photo']);
+                    if ($image == null) {
+                        echo $image->GetError();
+                    } else {
+                        $image->moveImageToFolder();
+                        $dataArray = array(
+                            'marque' => $_POST['marque'],
+                            'modele' => $_POST['modele'],
+                            'couleur' => $_POST['couleur'],
+                            'immatriculation' => $_POST['immatriculation'],
+                            'photo' => $image->getImageInfo()['uniqueName']
+                        );
+
+                        return $vehicule->create($dataArray, "vehicule");
+                    }
+
+                }
                 $vehicule->create($_POST, 'vehicule');
             }
         }

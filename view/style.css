@@ -25,8 +25,14 @@ nav .admin {
   color: hsla(0, 100%, 50%, 0.35);
 }
 
-.photo{
-  width: 7vh;
-  height: 7vh;
+.photo-conducteur{
+  width: 10vh;
+  height: 10vh;
+  border-radius: 50%;
+}
+
+.photo-vehicule{
+  width: 20%;
+  height: 20%;
   border-radius: 50%;
 }
