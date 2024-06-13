@@ -32,7 +32,6 @@ class VehiculeController
                         return $vehicule->create($dataArray, "vehicule");
                     }
                 }
-                $vehicule->create($_POST, 'vehicule');
             }
         }
 
