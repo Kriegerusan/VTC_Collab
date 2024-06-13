@@ -19,11 +19,11 @@
                 echo "<tr>\n";
                 echo "<td scope='row'>" . $value['id'] . "</td>\n";
                 if (!file_exists("../public/" . $value['photo'])) {
-                    echo "<td><img class='photo' src='/poo/vtc/ressources/nophoto.jpg' alt=''></td>\n";
+                    echo "<td><img class='photo-conducteur' src='/poo/vtc/ressources/nophoto.jpg' alt=''></td>\n";
                 } elseif ($value['photo'] != "") {
-                    echo "<td><img class='photo' src='/poo/vtc/public/" . $value['photo'] . "' alt=''></td>\n";
+                    echo "<td><img class='photo-conducteur' src='/poo/vtc/public/" . $value['photo'] . "' alt=''></td>\n";
                 } else {
-                    echo "<td><img class='photo' src='/poo/vtc/ressources/nophoto.jpg' alt=''></td>\n";
+                    echo "<td><img class='photo-conducteur' src='/poo/vtc/ressources/nophoto.jpg' alt=''></td>\n";
                 }
                 echo "<td>" . $value['prenom'] . "</td>\n";
                 echo "<td>" . $value['nom'] . "</td>\n";

@@ -21,11 +21,12 @@
         echo "<tr>\n";
         echo "<td scope='row'>" . $value['id'] . "</td>\n";
         if (!file_exists("../public/" . $value['photo'])) {
-          echo "<td>Pas d'image <i class='fa-solid fa-face-sad-tear' style='color: #0d6efd;'></i></td>";
-        } elseif ($value['photo'] != null) {
-          echo "<td><img src=../public/" . $value['photo'] . " width=25%></td>";
+          echo "<td><img class='photo-vehicule' src='/poo/vtc/ressources/nophoto.jpg' alt=''></td>";
+        }
+        if ($value['photo'] != null) {
+          echo "<td><img class='photo-vehicule' src=../public/" . $value['photo'] . " width=25%></td>";
         } else {
-          echo "<td>Pas d'image <i class='fa-solid fa-face-sad-tear' style='color: #0d6efd;'></i></td>";
+          echo "<td><img class='photo-vehicule' src='/poo/vtc/ressources/nophoto.jpg' alt=''></td>";
         }
 
         echo "<td>" . $value['marque'] . "</td>\n";
