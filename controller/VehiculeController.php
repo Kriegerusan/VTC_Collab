@@ -29,7 +29,7 @@ class VehiculeController
                             'photo' => $image->getImageInfo()['uniqueName']
                         );
 
-                        return $vehicule->create($dataArray, "vehicule");
+                        $vehicule->create($dataArray, "vehicule");
                     }
                 }
             }
