@@ -7,7 +7,7 @@ class ImageManager
 {
 
     private const FOLDERPATH = "../public/";
-    private const MAXFILESIZE = 400000;
+    private const MAXFILESIZE = 40000000;
     private array $extensions = ['jpg', 'png', 'jpeg', 'gif'];
 
 
@@ -133,6 +133,4 @@ class ImageManager
     {
         return $this->errorMessage;
     }
-
-
 }

@@ -25,7 +25,7 @@
                 }
                 echo "<td>" . $value['prenom'] . "</td>\n";
                 echo "<td>" . $value['nom'] . "</td>\n";
-                echo "<td><a href='?action=edit&id=" . $value['id']  .  "&prenom=" . $value['prenom'] . "&nom=" . $value['nom'] . "'><i class='fa-solid fa-pen'></a></td>\n";
+                echo "<td><a href='?action=edit&id=" . $value['id']  .  "&prenom=" . $value['prenom'] . "&nom=" . $value['nom'] . "#editConducteur'><i class='fa-solid fa-pen'></a></td>\n";
                 echo "<td><button type='button' class='btn btn-link suppressButton' data-bs-toggle='modal' data-bs-target='#deleteModal' value='" . $value['id'] . "'><i class='fa-solid fa-x'></i></button></a></td>\n";
                 echo "</tr>\n";
             }

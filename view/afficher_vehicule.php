@@ -30,7 +30,7 @@
         echo "<td>" . $value['modele'] . "</td>\n";
         echo "<td>" . $value['couleur'] . "</td>\n";
         echo "<td>" . $value['immatriculation'] . "</td>\n";
-        echo "<td><a href='?action=edit&id=" . $value['id']  .  "&marque=" . $value['marque'] . "&modele=" . $value['modele'] . "&couleur=" . $value['couleur'] . "&immatriculation=" . $value['immatriculation'] . "'><i class='fa-solid fa-pen'></a></td>\n";
+        echo "<td><a href='?action=edit&id=" . $value['id']  .  "&marque=" . $value['marque'] . "&modele=" . $value['modele'] . "&couleur=" . $value['couleur'] . "&immatriculation=" . $value['immatriculation'] . "#editVehicule'><i class='fa-solid fa-pen'></a></td>\n";
         echo "<td><button type='button' class='btn btn-link suppressButton' data-bs-toggle='modal' data-bs-target='#deleteModal' value='" . $value['id'] . "'><i class='fa-solid fa-x'></i></button></a></td>\n";
         echo "</tr>\n";
       }
