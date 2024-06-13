@@ -4,7 +4,7 @@ class Connection
 
     public function getConnect()
     {
-        $propertiesArray = parse_ini_file('./conf/DB.ini');
+        $propertiesArray = parse_ini_file('../config/connection.ini');
         $host = $propertiesArray["serveur"];
         $port = $propertiesArray["port"];
         $db = $propertiesArray["db"];
