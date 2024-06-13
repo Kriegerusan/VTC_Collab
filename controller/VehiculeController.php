@@ -13,12 +13,9 @@ class VehiculeController
             if (!$_GET) {
                 $vehicule  = new vehicule();
 
-                if($_FILES['photo']['size'] == 0) 
-                {
+                if ($_FILES['photo']['size'] == 0) {
                     $vehicule->create($_POST, 'vehicule');
-                }
-                else
-                {
+                } else {
                     $image = new ImageManager($_FILES['photo']);
                     if ($image == null) {
                         echo $image->GetError();
@@ -34,9 +31,7 @@ class VehiculeController
 
                         return $vehicule->create($dataArray, "vehicule");
                     }
-
                 }
-                $vehicule->create($_POST, 'vehicule');
             }
         }
 
