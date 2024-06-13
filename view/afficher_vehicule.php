@@ -20,7 +20,9 @@
       foreach ($voiture as $value) {
         echo "<tr>\n";
         echo "<td scope='row'>" . $value['id'] . "</td>\n";
-        if ($value['photo'] != null) {
+        if (!file_exists("../public/" . $value['photo'])) {
+          echo "<td>Pas d'image <i class='fa-solid fa-face-sad-tear' style='color: #0d6efd;'></i></td>";
+        } elseif ($value['photo'] != null) {
           echo "<td><img src=../public/" . $value['photo'] . " width=25%></td>";
         } else {
           echo "<td>Pas d'image <i class='fa-solid fa-face-sad-tear' style='color: #0d6efd;'></i></td>";

@@ -18,7 +18,9 @@
             foreach ($conduc as $value) {
                 echo "<tr>\n";
                 echo "<td scope='row'>" . $value['id'] . "</td>\n";
-                if ($value['photo'] != "") {
+                if (!file_exists("../public/" . $value['photo'])) {
+                    echo "<td><img class='photo' src='/poo/vtc/ressources/nophoto.jpg' alt=''></td>\n";
+                } elseif ($value['photo'] != "") {
                     echo "<td><img class='photo' src='/poo/vtc/public/" . $value['photo'] . "' alt=''></td>\n";
                 } else {
                     echo "<td><img class='photo' src='/poo/vtc/ressources/nophoto.jpg' alt=''></td>\n";
