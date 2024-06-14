@@ -5,7 +5,8 @@ class Connection
     public function getConnect()
     {
         $propertiesArray = parse_ini_file('../config/connection.ini', true);
-        $connectionMethod = $propertiesArray['connection localhost'];
+        $choixBD = $propertiesArray["choixConnection"];
+        $connectionMethod = $propertiesArray[$choixBD];
         $host = $connectionMethod["serveur"];
         $db = $connectionMethod["db"];
         $user = $connectionMethod["ut"];
