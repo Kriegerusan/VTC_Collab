@@ -4,9 +4,14 @@ class Connection
 
     public function getConnect()
     {
+        $propertiesArray = parse_ini_file('../config/connection.ini', true);
+        $connectionMethod = $propertiesArray['connection localhost'];
+        $host = $connectionMethod["serveur"];
+        $db = $connectionMethod["db"];
+        $user = $connectionMethod["ut"];
+        $pwd = $connectionMethod["mdp"];
         try {
-            //$db = new PDO("mysql:host=sql201.infinityfree.com;dbname=if0_36696451_vtc", "if0_36696451", "VaTPLmTwI70spU");
-            $db = new PDO("mysql:host=localhost;dbname=vtc", "root", "");
+            $db = new PDO("mysql:host=$host;dbname=$db", $user, $pwd);
         } catch (PDOException $e) {
             echo $e->getMessage();
             die;

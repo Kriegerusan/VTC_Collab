@@ -12,33 +12,34 @@
     </thead>
     <tbody class="table-group-divider tableSeparator">
       <?php
+
+      //récupération des info vehicule
       $tableauVehicule = [];
       $vehicule  = new Vehicule();
       $listevehicule = $vehicule->read("vehicule");
       foreach ($listevehicule as $key => $value) {
         $tableauVehicule[$value['id']] = $value['marque'] . " " . $value['modele'];
       }
+      //récupération des info conducteur
+      $tableauConducteur = [];
       $conducteur  = new Conducteur();
       $listeConduc = $conducteur->read("conducteur");
-      $tableauConducteur = [];
       foreach ($listeConduc as $key => $value) {
         $tableauConducteur[$value['id']] = $value['prenom'] . " " . $value['nom'];
       }
+      //boucle d'affichage des associations
       foreach ($asso as $value) {
         echo "<tr>\n";
         echo "<td scope='row'>" . $value['id'] . "</td>\n";
         echo "<td>" . $tableauConducteur[$value['conducteur']] . "<p>" . $value['conducteur'] . "</p></td>\n";
         echo "<td>" . $tableauVehicule[$value['vehicule']] . "<p>" . $value['vehicule'] . "</p></td>\n";
-        echo "<td><a href='?action=edit&id=" . $value['id']  . "&conducteur=" . $value['conducteur'] . "&vehicule=" . $value['vehicule'] . "'><i class='fa-solid fa-pen'></i></a></td>\n";
+        echo "<td><a href='?action=edit&id=" . $value['id']  . "&conducteur=" . $value['conducteur'] . "&vehicule=" . $value['vehicule'] . "#editAssociation'><i class='fa-solid fa-pen'></i></a></td>\n";
         echo "<td><button type='button' class='btn btn-link suppressButton' data-bs-toggle='modal' data-bs-target='#deleteModal' value='" . $value['id'] . "'><i class='fa-solid fa-x'></i></button></a></td>\n";
         echo "</tr>\n";
       }
       ?>
 
-      <!-- Button trigger modal -->
-
-
-      <!-- Modal -->
+      <!-- partie Modal confirmation suppression -->
       <form>
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">

@@ -53,7 +53,7 @@ $conducteurs = $adminControllerInstance->afficherConducteurLibre();
                     ";
                 }
             } else {
-                echo"
+                echo "
                     <tr>
                         <td colspan=5>Aucun Vehicule libre <i class='fa-solid fa-face-sad-tear' style='color: #0d6efd;'></i></td>
                     </tr>

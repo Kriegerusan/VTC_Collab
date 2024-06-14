@@ -14,17 +14,20 @@
         <tbody class="table-group-divider tableSeparator">
 
             <?php
+            //boucle d'affichage des conducteurs
             foreach ($conduc as $value) {
                 echo "<tr>\n";
                 echo "<td scope='row'>" . $value['id'] . "</td>\n";
-                if ($value['photo'] != "") {
-                    echo "<td><img class='photo' src='/poo/vtc/public/" . $value['photo'] . "' alt=''></td>\n";
+                if (!file_exists("../public/" . $value['photo'])) {
+                    echo "<td><img class='photo-conducteur' src='/poo/vtc/ressources/nophoto.jpg' alt=''></td>\n";
+                } elseif ($value['photo'] != "") {
+                    echo "<td><img class='photo-conducteur' src='/poo/vtc/public/" . $value['photo'] . "' alt=''></td>\n";
                 } else {
-                    echo "<td><img class='photo' src='/poo/vtc/ressources/nophoto.jpg' alt=''></td>\n";
+                    echo "<td><img class='photo-conducteur' src='/poo/vtc/ressources/nophoto.jpg' alt=''></td>\n";
                 }
                 echo "<td>" . $value['prenom'] . "</td>\n";
                 echo "<td>" . $value['nom'] . "</td>\n";
-                echo "<td><a href='?action=edit&id=" . $value['id']  .  "&prenom=" . $value['prenom'] . "&nom=" . $value['nom'] . "'><i class='fa-solid fa-pen'></a></td>\n";
+                echo "<td><a href='?action=edit&id=" . $value['id']  .  "&prenom=" . $value['prenom'] . "&nom=" . $value['nom'] . "#editConducteur'><i class='fa-solid fa-pen'></a></td>\n";
                 echo "<td><button type='button' class='btn btn-link suppressButton' data-bs-toggle='modal' data-bs-target='#deleteModal' value='" . $value['id'] . "'><i class='fa-solid fa-x'></i></button></a></td>\n";
                 echo "</tr>\n";
             }
@@ -33,7 +36,7 @@
     </table>
 </div>
 
-<!-- Modal -->
+<!-- partie Modal confirmation suppression -->
 <form>
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
